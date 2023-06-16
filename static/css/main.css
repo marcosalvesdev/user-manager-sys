@@ -1,0 +1,245 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.box-container input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.body-section {
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    height: auto;
+    padding: 3.5rem;
+}
+
+header {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+/* Navibar Section */
+
+.main-navbar {
+    color: whitesmoke;
+    padding: 0.2rem;
+    width: 100%;
+    display: flex;
+    background-color: rgb(0, 0, 0, 0.8);
+    justify-content: start
+}
+
+.nav-icon {
+    margin: 0;
+    padding: 0;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.nav-icon svg {
+    fill: whitesmoke;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.nav-icon svg:hover {
+    fill: yellowgreen;
+    transition: 0.2s;
+}
+
+/* End Navibar Section */
+
+/* Menu Section */
+
+.menu {
+    margin: 0 0 0 20px;
+    list-style: none;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.menu a {
+    text-decoration: none;
+    /* background-color: yellowgreen; */
+    padding: 0.6rem;
+    border-radius: 5px;
+    color: yellowgreen;
+    flex: 1;
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.menu a:hover {
+    background-color: rgb(111, 165, 3);
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+/* End Menu Section */
+
+/* Search Section */
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.search-box {
+    margin-right: 3rem;
+    padding: 0;
+}
+
+.search-box form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-box form:last-child {
+    align-items: baseline;
+}
+
+.search-box form input {
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0 1rem 0 1rem;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    color: whitesmoke;
+    font-size: 1rem;
+    height: 25px;
+
+}
+
+.search-box form input:focus input:hover {
+    border-bottom: 1px solid yellowgreen;
+}
+
+.search-box form input:hover {
+    border-bottom: 1px solid yellowgreen;
+}
+
+.search-box form button {
+    margin: 0;
+    padding: 0.8rem;
+    fill: whitesmoke;
+    cursor: pointer;
+    border: none;
+}
+
+.search-box svg:hover {
+    fill: yellowgreen;
+    transition: 0.2s;
+}
+
+input[type="search"] {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+/* End Search Section */
+
+
+/* Login Section */
+
+.box-container {
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: whitesmoke;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.checkout label, input[type=checkbox] {
+    cursor: pointer;
+    border: none;
+}
+
+.checkout input[type=checkbox]:checked {
+    background-color: yellowgreen;
+}
+
+/* Login Section - Helper */
+
+.helper-create-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.helper-create-account a {
+    text-decoration: none;
+}
+
+.helper-create-account a:hover {
+    color: yellowgreen;
+    transition: 0.2s;
+}
+
+/* End */
+
+/* Submit Button */
+
+.submit-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 24px;
+    margin-top: 30px;
+    gap: 1rem;
+    
+}
+
+.submit-button button {
+    width: 100%;
+    background-color: yellowgreen;
+    border-color: yellowgreen;
+    color: rgb(33, 51, 0);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.submit-button a {
+    width: 100%;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.submit-button button:hover {
+    background-color: rgb(111, 165, 3);
+    transition: 0.3s;
+}
+
+/* End */
+
+.helper-text {
+    color: rgba(245, 245, 245, 0.781);
+}
+
+/* End Login Section */

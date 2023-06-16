@@ -1,0 +1,109 @@
+.dash-title {
+    margin-bottom: 2rem;
+}
+
+hr {
+    margin: 2rem 0;
+    border-color: whitesmoke;
+    opacity: 0.5;
+}
+
+.dash-users-table {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
+    padding: 40px;
+    margin-top: 3rem;
+}
+
+
+.dash-users-table table {
+    margin: none;
+}
+
+
+.dash-users-table table thead th {
+   background-color: yellowgreen;
+   color: rgba(0, 0, 0, 0.8);
+}
+
+.dash-users-table table tr {
+    border-radius: 10px;
+}
+
+.checkbox-th {
+    display: flex;
+    justify-content: center;
+    margin: none;
+    padding: none;
+    border: none;
+}
+
+/* Table Tools Section */
+
+.table-tools {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.search-tool {
+    background-color: none;
+}
+
+.search-tool form {
+    display: flex;
+    height: 100%;
+}
+
+.search-tool form input {
+    border-radius: 5px 0px 0px 5px;
+    margin: 0;
+    border: 1px solid whitesmoke;
+    border-right: none;
+    outline: none;
+    padding: 0 1rem 0 1rem;
+    color: rgb(0, 0, 0, 0.8);
+    font-size: 1rem;
+}
+
+.search-tool form button {
+    fill: rgb(0, 0, 0, 0.8);
+    background-color: yellowgreen;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    padding: 0 0.9rem;
+    color: rgb(0, 0, 0, 0.8);
+}
+
+.search-tool form button:hover {
+    background-color: rgb(111, 165, 3);
+    transition: 0.2s;
+    fill: whitesmoke;
+    color: whitesmoke;
+}
+
+.user-management-buttons {
+    /* background-color: green; */
+    display: flex;
+    gap: 1rem;
+}
+
+.user-management-buttons button {
+    background-color: yellowgreen;
+    border-radius: 5px;
+    border: none;
+    padding: 0.3rem 1rem;
+    display: flex;
+    gap: 0.6rem;
+    color: rgb(0, 0, 0, 0.8);;
+}
+
+.user-management-buttons button:hover {
+    background-color: rgb(111, 165, 3);
+    color: whitesmoke;
+    transition: 0.3s;
+}
+
+
+/* End Table Tooks Section */
