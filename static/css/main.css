@@ -1,13 +1,28 @@
+:root {
+    --primary-color: #9acd32;
+    --primary-color-dark: #6fa503;
+    --main-light-color: #f5f5f5;
+    --helper-text-color: #f5f5f5c7;
+    --dark-0-7: #000000b3;
+    --dark-0-8: #000000cc;
+    --primary-danger-color: #ff6347;
+}
+
 html, body {
     padding: 0;
     margin: 0;
     height: 100%;
 }
 
-.box-container input:focus {
-    outline: 0;
-    box-shadow: none;
+header {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
 }
+
 
 .body-section {
     background-position: center;
@@ -20,28 +35,34 @@ html, body {
     padding: 3.5rem;
 }
 
-header {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    top: 0;
+.box-container {
+    width: 40%;
+    background-color: var(--dark-0-7);
+    color: var(--main-light-color);
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+.box-container input:focus {
+    outline: 0;
+    box-shadow: none;
 }
 
 /* Navibar Section */
 
 .main-navbar {
-    color: whitesmoke;
+    color: var(--main-light-color);
     padding: 0.2rem;
     width: 100%;
     display: flex;
-    background-color: rgb(0, 0, 0, 0.8);
+    background-color: var(--dark-0-8);
     justify-content: start
 }
 
 .nav-icon {
     margin: 0;
+    margin-left: 1rem;
     padding: 0;
     width: 5%;
     display: flex;
@@ -50,13 +71,13 @@ header {
 }
 
 .nav-icon svg {
-    fill: whitesmoke;
+    fill: var(--main-light-color);
     width: 2.5rem;
     height: 2.5rem;
 }
 
 .nav-icon svg:hover {
-    fill: yellowgreen;
+    fill: var(--primary-color);
     transition: 0.2s;
 }
 
@@ -67,30 +88,30 @@ header {
 .menu {
     margin: 0 0 0 20px;
     list-style: none;
-    width: 50%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: start;
-    gap: 1rem;
-    margin-right: 1rem;
+    gap: 0.5rem;
 }
 
 .menu a {
+    display: inline-block;
     text-decoration: none;
-    /* background-color: yellowgreen; */
     padding: 0.6rem;
     border-radius: 5px;
-    color: yellowgreen;
+    color: var(--primary-color);
     flex: 1;
     flex-shrink: 0;
     text-align: center;
+    white-space: nowrap;
     font-weight: 500;
     font-size: 1rem;
 }
 
 .menu a:hover {
-    background-color: rgb(111, 165, 3);
-    color: whitesmoke;
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
     transition: 0.2s;
 }
 
@@ -125,31 +146,31 @@ header {
     outline: none;
     background: none;
     padding: 0 1rem 0 1rem;
-    border-bottom: 1px solid rgb(245, 245, 245);
-    color: whitesmoke;
+    border-bottom: 1px solid var(--main-light-color);
+    color: var(--main-light-color);
     font-size: 1rem;
     height: 25px;
 
 }
 
 .search-box form input:focus input:hover {
-    border-bottom: 1px solid yellowgreen;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .search-box form input:hover {
-    border-bottom: 1px solid yellowgreen;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .search-box form button {
     margin: 0;
     padding: 0.8rem;
-    fill: whitesmoke;
+    fill: var(--main-light-color);
     cursor: pointer;
     border: none;
 }
 
 .search-box svg:hover {
-    fill: yellowgreen;
+    fill: var(--primary-color);
     transition: 0.2s;
 }
 
@@ -167,21 +188,13 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* Login Section */
 
-.box-container {
-    width: 40%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: whitesmoke;
-    padding: 40px;
-    border-radius: 10px;
-}
-
 .checkout label, input[type=checkbox] {
     cursor: pointer;
     border: none;
 }
 
 .checkout input[type=checkbox]:checked {
-    background-color: yellowgreen;
+    background-color: var(--primary-color);
 }
 
 /* Login Section - Helper */
@@ -197,7 +210,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .helper-create-account a:hover {
-    color: yellowgreen;
+    color: var(--primary-color);
     transition: 0.2s;
 }
 
@@ -212,34 +225,90 @@ input[type="search"]::-webkit-search-cancel-button {
     padding-bottom: 24px;
     margin-top: 30px;
     gap: 1rem;
-    
+    font-family: var(--bs-btn-font-family);
+    font-size: 1rem;
+}
+
+.submit-button button, a {
+    flex: 1;
 }
 
 .submit-button button {
-    width: 100%;
-    background-color: yellowgreen;
-    border-color: yellowgreen;
-    color: rgb(33, 51, 0);
-    font-size: 1.2rem;
-    font-weight: 500;
+    background-color: var(--primary-color);
+    border: 1px;
+    border-radius: 0.375rem;
+    padding: 6px 12px;
+    line-height: 1.5;
 }
 
-.submit-button a {
-    width: 100%;
-    color: whitesmoke;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
 
 .submit-button button:hover {
-    background-color: rgb(111, 165, 3);
+    background-color: var(--primary-color-dark);
     transition: 0.3s;
 }
 
 /* End */
 
 .helper-text {
-    color: rgba(245, 245, 245, 0.781);
+    color: var(--helper-text-color);
 }
 
 /* End Login Section */
+
+
+/* Footer Section */
+
+footer {
+    background-color: var(--dark-0-7)
+}
+
+footer .social-medias {
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    background-color: var(--dark-0-8)
+}
+
+footer .social-medias ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer .social-medias svg {
+    fill: var(--primary-color);
+    transition: 0.2s;
+}
+
+footer .copyright a, span {
+    max-width: fit-content;
+    text-decoration: none;
+}
+
+footer .copyright a {
+    color: var(--primary-color);
+    transition: 0.2s;
+}
+
+footer .copyright {
+    display: flex;
+    justify-content: center;
+    color: var(--main-light-color);
+    background-color: var(--dark-0-7);
+    padding: 10px;
+    gap: 0.5rem;
+}
+
+footer .social-medias svg:hover {
+    fill: var(--main-light-color);
+}
+
+footer .copyright a:hover {
+    color: var(--primary-color-dark);
+}
+
+
+/* End Footer Section */

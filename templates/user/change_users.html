@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/update_users.css' %}">
+{% endblock link %}
+
+
+{% block body %}
+
+<div class="main-change-users-container">
+
+    <div class="box-container">
+
+        <form action="{% url 'massive_users_delete' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="deleteOnOff" role="switch">
+                <label class="form-check-label" for="deleteOnOff">Delete Users</label>
+            </div>
+
+            <div class="submit-delete-buttons">
+                <button type="submit" class="btn btn-outline-danger" role="button">Delete</button>
+                <a href="{% url 'manager' %}" class="btn btn-danger" role="button">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="box-container">
+        <form action="{% url 'update_users' %}" method="post">
+
+            {% csrf_token %}
+
+            {{ sucess_users_deleted }}
+
+            <div class="checkouts">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="remove_is_active" id="{{ form.is_active.auto_id }}">
+                    <label class=" form-check-label" for="{{ form.is_active.name }}">
+                        Deactive users
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="remove_is_superuser" id="{{ form.is_superuser.auto_id }}">
+                    <label class="form-check-label" for="{{ form.is_superuser.name }}">
+                        Remove Superuser Status
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="remove_is_staff" id="{{ form.is_staff.auto_id }}">
+                    <label class="form-check-label" for="{{ form.is_staff.name }}">
+                        Remove Staff Status
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="submit-button">
+                <button type="submit" class="">Change</button>
+                <a href="{% url 'manager' %}" class="btn btn-danger" role="button">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+    <div class="box-container">
+
+        <form action="{% url 'update_users' %}" method="post">
+
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Oops! Something went wrong:</strong>
+                <ul>
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <li>
+                        <strong>{{ field.label }}</strong>: {{ error }}
+                    </li>
+                    {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                    <li><strong>{{ error }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M16.75 8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"></path>
+                            <path
+                                d="M15.75 0a8.25 8.25 0 1 1-2.541 16.101l-1.636 1.636a1.744 1.744 0 0 1-1.237.513H9.25a.25.25 0 0 0-.25.25v1.448a.876.876 0 0 1-.256.619l-.214.213a.75.75 0 0 1-.545.22H5.25a.25.25 0 0 0-.25.25v1A1.75 1.75 0 0 1 3.25 24h-1.5A1.75 1.75 0 0 1 0 22.25v-2.836c0-.464.185-.908.513-1.236l7.386-7.388A8.249 8.249 0 0 1 15.75 0ZM9 8.25a6.733 6.733 0 0 0 .463 2.462.75.75 0 0 1-.168.804l-7.722 7.721a.25.25 0 0 0-.073.177v2.836c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-1c0-.966.784-1.75 1.75-1.75H7.5v-1c0-.966.784-1.75 1.75-1.75h1.086a.25.25 0 0 0 .177-.073l1.971-1.972a.75.75 0 0 1 .804-.168A6.75 6.75 0 1 0 9 8.25Z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input type="{{ form.password1.field.widget.input_type }}" name="{{ form.password1.name }}"
+                        id="{{ form.password1.auto_id }}" class="form-control password-imput" id="inputPassword2"
+                        value="{{ form.password1.value | default:'' }}">
+                </div>
+                <div id="password2Help" class="form-text  helper-text">The password must be 8-20 characters long,
+                    contain
+                    letters and
+                    numbers,
+                    and must not contain spaces, special characters, or emoji.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password confirmation</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M16.75 8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"></path>
+                            <path
+                                d="M15.75 0a8.25 8.25 0 1 1-2.541 16.101l-1.636 1.636a1.744 1.744 0 0 1-1.237.513H9.25a.25.25 0 0 0-.25.25v1.448a.876.876 0 0 1-.256.619l-.214.213a.75.75 0 0 1-.545.22H5.25a.25.25 0 0 0-.25.25v1A1.75 1.75 0 0 1 3.25 24h-1.5A1.75 1.75 0 0 1 0 22.25v-2.836c0-.464.185-.908.513-1.236l7.386-7.388A8.249 8.249 0 0 1 15.75 0ZM9 8.25a6.733 6.733 0 0 0 .463 2.462.75.75 0 0 1-.168.804l-7.722 7.721a.25.25 0 0 0-.073.177v2.836c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-1c0-.966.784-1.75 1.75-1.75H7.5v-1c0-.966.784-1.75 1.75-1.75h1.086a.25.25 0 0 0 .177-.073l1.971-1.972a.75.75 0 0 1 .804-.168A6.75 6.75 0 1 0 9 8.25Z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input type="{{ form.password2.field.widget.input_type }}" name="{{ form.password2.name }}"
+                        id="{{ form.password2.auto_id }}" class="form-control password-imput" id="inputPassword1"
+                        value="{{ form.password2.value | default:'' }}">
+                </div>
+                <div id="password1Help" class="form-text helper-text">The passwords have match!</div>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="flexSwitchCheck" role="switch" id="showPasswords">
+                <label class="form-check-label" for="flexSwitchCheck">Show Password</label>
+            </div>
+
+            <div class="checkouts">
+
+                <div class="form-check">
+                    {% if form.is_active.value %}
+                    <input class="form-check-input" type="{{ form.is_active.field.widget.input_type }}"
+                        name="{{ form.is_active.name }}" id="{{ form.is_active.auto_id }}" checked>
+                    {% else %}
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="{{ form.is_active.name }}" id="{{ form.is_active.auto_id }}">
+                    {% endif %}
+                    <label class=" form-check-label" for="{{ form.is_active.name }}">
+                        {{ form.is_active.label }}
+                    </label>
+                </div>
+
+                <div class="form-check">
+
+                    {% if form.is_superuser.value %}
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="{{ form.is_superuser.name }}" id="{{ form.is_superuser.auto_id }}" checked>
+                    {% else %}
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="{{ form.is_superuser.name }}" id="{{ form.is_superuser.auto_id }}">
+                    {% endif %}
+                    <label class="form-check-label" for="{{ form.is_superuser.name }}">
+                        {{ form.is_superuser.label }}
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    {% if form.is_staff.value %}
+                    <input class="form-check-input" type="{{ form.is_staff.field.widget.input_type }}"
+                        name="{{ form.is_staff.name }}" id="{{ form.is_staff.auto_id }}" checked>
+                    {% else %}
+                    <input class="form-check-input" type="{{ form.is_superuser.field.widget.input_type }}"
+                        name="{{ form.is_staff.name }}" id="{{ form.is_staff.auto_id }}">
+                    {% endif %}
+                    <label class="form-check-label" for="{{ form.is_staff.name }}">
+                        {{ form.is_staff.label }}
+                    </label>
+                </div>
+
+            </div>
+            <div class="submit-button">
+                <button type="submit" class="">Change</button>
+                <a href="{% url 'manager' %}" class="btn btn-danger" role="button">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+
+    document.getElementById('showPasswords').onclick = function () {
+        var passwordInputs = document.getElementsByClassName('password-imput');
+        for (var i = 0; i < passwordInputs.length; i++) {
+            if (passwordInputs[i].type === "password") {
+                passwordInputs[i].type = 'text';
+            } else {
+                passwordInputs[i].type = 'password';
+            }
+
+        }
+    };
+
+
+</script>
+
+{% endblock body %}

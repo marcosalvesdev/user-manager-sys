@@ -1,0 +1,50 @@
+.main-change-users-container {
+    display: grid;
+    margin-top: 3rem;
+    grid-template-columns: 40% 40%;
+    grid-template-rows: 1fr;
+    gap: 2rem;
+    justify-content: center;
+}
+
+
+.main-change-users-container .box-container {
+    grid-column: 1 / span 1;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main-change-users-container .box-container:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-change-users-container .box-container:first-child form {
+    width: 100%;
+    padding: 0;
+}
+
+.main-change-users-container .box-container:first-child .submit-delete-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    margin-top: 30px;
+    gap: 1rem;
+    font-family: var(--bs-btn-font-family);
+    font-size: 1rem;
+}
+
+
+.main-change-users-container .box-container:last-child {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.checkouts {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}

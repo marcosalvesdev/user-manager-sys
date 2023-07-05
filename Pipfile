@@ -7,6 +7,10 @@ name = "pypi"
 django = "*"
 python-decouple = "*"
 django-bootstrap5 = "*"
+gunicorn = "*"
+django-filter = "*"
+pillow = "*"
+django-browser-reload = "*"
 
 [dev-packages]
 pip = "*"

@@ -2,10 +2,29 @@
     margin-bottom: 2rem;
 }
 
+button:focus {
+    border: none;
+    box-shadow: none;
+    background-color: red;
+}
+
+button:active {
+    border: none;
+    box-shadow: none;
+}
+
 hr {
     margin: 2rem 0;
     border-color: whitesmoke;
     opacity: 0.5;
+}
+
+.paginator-table {
+    margin-top: 30px;
+}
+
+.paginator-table li a {
+    color: var(--dark-0-8);
 }
 
 .dash-users-table {
@@ -14,29 +33,40 @@ hr {
     color: whitesmoke;
     padding: 40px;
     margin-top: 3rem;
+    border-radius: 10px
 }
-
 
 .dash-users-table table {
-    margin: none;
+    text-align: center;
+    vertical-align: middle;;
+ }
+
+.checkbox-th input:checked {
+    background-color: var(--primary-color);
 }
 
+.active svg {
+    fill: var(--primary-color);
+}
+
+.not-active svg {
+    fill: var(--primary-danger-color);
+}
+
+.manage-tool {
+    padding: 0.5rem ;
+    text-align: center;
+    color: var(--main-light-color);
+}
+
+.manage-tool:hover {
+    color: var(--primary-color);
+    transition: 0.2s;
+}
 
 .dash-users-table table thead th {
    background-color: yellowgreen;
    color: rgba(0, 0, 0, 0.8);
-}
-
-.dash-users-table table tr {
-    border-radius: 10px;
-}
-
-.checkbox-th {
-    display: flex;
-    justify-content: center;
-    margin: none;
-    padding: none;
-    border: none;
 }
 
 /* Table Tools Section */
@@ -84,26 +114,102 @@ hr {
 }
 
 .user-management-buttons {
-    /* background-color: green; */
     display: flex;
     gap: 1rem;
+    width: 40%;
 }
 
-.user-management-buttons button {
-    background-color: yellowgreen;
-    border-radius: 5px;
-    border: none;
-    padding: 0.3rem 1rem;
+.user-management-buttons a {
+    flex: 1;
     display: flex;
-    gap: 0.6rem;
-    color: rgb(0, 0, 0, 0.8);;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.3rem 1rem    ;
+    white-space: nowrap;
+    align-items: center;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    color: var(--dark-0-8);
 }
 
-.user-management-buttons button:hover {
+.user-management-buttons a:first-child {
+    background-color: rgb(50, 97, 205);
+    color: whitesmoke;
+}
+
+.user-management-buttons a:first-child:hover {
+    background-color: rgb(46, 83, 170);
+    transition: 0.3s;
+}
+
+.user-management-buttons a:hover {
     background-color: rgb(111, 165, 3);
     color: whitesmoke;
     transition: 0.3s;
 }
 
+.bool-filters button {
+    background-color: rgb(50, 97, 205);
+    border-radius: 5px;
+    border: none;
+    padding: 0.3rem 1rem;
+    display: flex;
+    gap: 0.6rem;
+    color: var(--primary-light-color);
+    text-decoration: none;
+}
+
+.bool-filters button:hover {
+    background-color: rgb(46, 83, 170);
+    transition: 0.3s;
+}
+
+.bool-filters form {
+    display: flex;
+    margin-bottom: 2rem;
+    width: 100%;    
+    align-items: center;
+}
+
+.bool-filters form div {
+    display: flex;
+    justify-content: center;
+    margin-right: 1rem;
+    gap: 5px;
+}
+
 
 /* End Table Tooks Section */
+
+
+.paginator-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-link {
+    border-color: var(--dark-0-8);
+}
+
+.curr-page .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-0-8);
+}
+
+.curr-page .page-link:hover {
+    border-color: var(--primary-color);
+}
+
+.page-link:hover {
+    border-color: var(--dark-0-8);
+    color: var(--dark-0-8);
+}
+
+.paginator-nav .disabled .page-link {
+    opacity: 0.7;
+    border-color: var(--dark-0-8);
+    color: var(--dark-0-8);
+}
