@@ -1,0 +1,4 @@
+from manager.forms.change_profile import ChangeUserProfileForm
+from manager.forms.change_user import CustomChangeUserForm
+from manager.forms.user_creation import CustomUserCreationForm
+from manager.forms.massive_users_change import MassiveChangeUsersForm

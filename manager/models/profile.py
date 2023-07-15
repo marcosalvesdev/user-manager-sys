@@ -2,7 +2,6 @@ import os
 import uuid
 
 from django.db import models
-from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext as _
 
 
@@ -11,18 +10,6 @@ def custom_upload_to(instance, filename):
     filename = f"user_{instance.user.id}_{uuid.uuid1()}_profile_picture{extension}"
 
     return f"profile/user_{instance.user.id}/{filename}"
-
-
-class CustomBaseUserManager(UserManager):
-    ...
-
-
-class CustomUserModel(AbstractUser):
-    objects = UserManager()
-
-    class Meta(AbstractUser.Meta):
-        db_table = "user"
-        swappable = "AUTH_USER_MODEL"
 
 
 class UserProfileModel(models.Model):
