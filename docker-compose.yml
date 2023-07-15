@@ -17,7 +17,6 @@ services:
         depends_on:
             - postgres
         environment:
-            IS_PRODUCTION: "True"
             RUNIN_IN_CONTAINER: "True"
             DEBUG: "True"
             DJANGO_DB: postgresql
@@ -29,6 +28,7 @@ services:
 
     postgres:
         image: postgres:13.0-alpine
+        container_name: postgres
         restart:  always
         environment:
             POSTGRES_DB: postgres
@@ -37,7 +37,7 @@ services:
         ports:
             - "5432:5432"
         volumes:
-            - dbdata:/var/lib/postgresql/data/
+            - pgdata:/var/lib/postgresql/data
     
 volumes:
-  dbdata:
+  pgdata:

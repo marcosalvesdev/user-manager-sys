@@ -116,7 +116,6 @@ hr {
 .user-management-buttons {
     display: flex;
     gap: 1rem;
-    width: 40%;
 }
 
 .user-management-buttons a {

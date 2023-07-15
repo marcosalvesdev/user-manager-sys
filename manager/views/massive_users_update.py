@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model, mixins
 from django.urls import reverse_lazy
 from manager.forms import MassiveChangeUsersForm
 
-from user_manager_sys.settings import ALLOWED_HOSTS
+from user_manager_sys.settings import ALLOWED_HOSTS, DEBUG, IS_PRODUCTION
 
 User = get_user_model()
 
@@ -18,16 +18,19 @@ class MassiveUsersUpdateView(
     form_class = MassiveChangeUsersForm
     success_url = reverse_lazy("manager")
     template_name = "user/change_users.html"
-    allowed_origins_requests = [
-        "http://localhost:8000",
-        "http://127.0.0.1:8000/manager/",
-    ]
+
+    def allowed_origins_requests(self):
+        return [f"https://{host}/manager/" for host in ALLOWED_HOSTS]
 
     def check_origin_request(self) -> bool:
+        if DEBUG and not IS_PRODUCTION:
+            return True
+
         origin_referer = self.request.headers.get("Referer")
+        print(origin_referer)
 
         if origin_referer:
-            for origin in self.allowed_origins_requests:
+            for origin in self.allowed_origins_requests():
                 if origin in origin_referer:
                     return True
 
