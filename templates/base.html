@@ -51,7 +51,7 @@
                         <li class="option-04">Blog</li>
                     </a>
                     <a href="{% url 'manager' %}">
-                        <li class="option-05">Manager Dashboard</li>
+                        <li class="option-05">Manager manager</li>
                     </a>
                     {% if not user.is_authenticated %}
                     <a href="{% url 'login' %}">
@@ -66,9 +66,9 @@
                 </ul>
                 <div class="search">
                     <div class="search-box">
-                        <form action="#" method="post">
+                        <form action="" method="post">
                             {% csrf_token %}
-                            <button id="search-button" class="btn" type="submit">
+                            <button id="search-button" class="btn" type="submit" disabled>
                                 <svg id="search-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     width="24" height="24">
                                     <path
@@ -85,6 +85,7 @@
                 </div>
             </nav>
         </header>
+
         <section class="body-section bg-dark bg-gradient">
             {% block body %}{% endblock body %}
         </section>
@@ -148,7 +149,7 @@
                     </svg>
                     2023 Copyright:
                 </span>
-                <a href="#"> Marcos Vinícius Silva </a>
+                <a href="#">Marcos Vinícius Silva</a>
             </div>
         </footer>
 

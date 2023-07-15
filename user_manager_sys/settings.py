@@ -52,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 if DEBUG:
@@ -87,12 +88,25 @@ WSGI_APPLICATION = "user_manager_sys.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+if config("RUNIN_IN_CONTAINER", default=False, cast=bool):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": config("POSTGRES_NAME"),
+            "USER": config("POSTGRES_USER"),
+            "PASSWORD": config("POSTGRES_PASSWORD"),
+            "HOST": config("POSTGRES_HOST"),
+            "PORT": config("POSTGRES_PORT"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
@@ -139,11 +153,35 @@ STATIC_ROOT = "staticfiles"
 
 MEDIA_ROOT = BASE_DIR / "media"
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "LOCATION": STATIC_ROOT,
+    },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "LOCATION": MEDIA_ROOT,
+    },
+    "s3": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+        "ACCESS_KEY_ID": config("ACCESS_KEY_ID", default=""),
+        "SECRET_ACCESS_KEY": config("SECRET_ACCESS_KEY", default=""),
+        "AWS_STORAGE_BUCKET_NAME": config("AWS_STORAGE_BUCKET_NAME", default=""),
+        "AWS_S3_REGION_NAME": config("AWS_S3_REGION_NAME", default=""),
+        "AWS_DEFAULT_ACL": config("AWS_DEFAULT_ACL", default=""),
+        "AWS_S3_FILE_OVERWRITE": False,
+    },
+}
+
+
+# Login and logout configs
+
 LOGIN_URL = "/login/"
 
 LOGIN_REDIRECT_URL = "/index/"
 
 LOGOUT_REDIRECT_URL = "/login/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

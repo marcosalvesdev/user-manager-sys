@@ -1,5 +1,6 @@
 import json
 from typing import Any, Dict
+from django import http
 
 from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
@@ -23,6 +24,10 @@ User = get_user_model()
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        # For now I'll let it this way till the index page is builded
+        return HttpResponseRedirect(reverse_lazy("manager"))
 
 
 class Loginview(views.LoginView):
@@ -157,10 +162,7 @@ class MassiveUsersDeleteView(
 
         if users_to_delete and delete_on:
             users_to_delete = json.loads(users_to_delete)
-            print(users_to_delete)
-            print(type(users_to_delete))
             users = User.objects.filter(id__in=users_to_delete)
-            print(users)
             users.delete()
 
             response = HttpResponseRedirect(self.success_url)
@@ -224,8 +226,6 @@ class ManagerView(
         data.pop("csrfmiddlewaretoken")
 
         user_ids = [int(user_id[0]) for user_id in data.values()]
-
-        print(user_ids)
 
         if not user_ids:
             return HttpResponseRedirect(reverse_lazy("manager"))

@@ -10,7 +10,12 @@ django-bootstrap5 = "*"
 gunicorn = "*"
 django-filter = "*"
 pillow = "*"
-django-browser-reload = "*"
+psycopg2 = "*"
+pip = "*"
+install = "*"
+psycopg2-binary = "*"
+whitenoise = "*"
+botocore = "*"
 
 [dev-packages]
 pip = "*"

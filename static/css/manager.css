@@ -1,4 +1,4 @@
-.dash-title {
+.manager-title {
     margin-bottom: 2rem;
 }
 
@@ -27,7 +27,7 @@ hr {
     color: var(--dark-0-8);
 }
 
-.dash-users-table {
+.manager-users-table {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     color: whitesmoke;
@@ -36,7 +36,7 @@ hr {
     border-radius: 10px
 }
 
-.dash-users-table table {
+.manager-users-table table {
     text-align: center;
     vertical-align: middle;;
  }
@@ -64,7 +64,7 @@ hr {
     transition: 0.2s;
 }
 
-.dash-users-table table thead th {
+.manager-users-table table thead th {
    background-color: yellowgreen;
    color: rgba(0, 0, 0, 0.8);
 }

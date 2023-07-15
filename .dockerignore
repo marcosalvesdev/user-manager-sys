@@ -1,0 +1,8 @@
+db.sqlite3*
+Makefile
+.idea/
+.vscode/
+.env
+.gitignore
+*__pycache__/
+temp.*
