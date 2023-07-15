@@ -3,4 +3,5 @@
 db.sqlite3
 temp.*
 .vscode/
-.staticfiles/
+staticfiles/
+media/
